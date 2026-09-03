@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be™ Brooklyn Equine at Prospect Park Stable</title>
+  <meta name="description" content="Brooklyn's only centrally located stable. Horse care & riding programs for all ages, pony rides, trail rides, and lessons in Prospect Park.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #1b3a2b;
+      --forest-light: #2d5a45;
+      --saddle: #5c3a21;
+      --cream: #f7f5f0;
+      --gold: #c9a227;
+      --charcoal: #2a2a2a;
+      --stone: #6b6b6b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--charcoal);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.2; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container { width: min(1120px, 92%); margin: 0 auto; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--forest);
+    }
+    .btn-primary:hover {
+      background: #b08d1f;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      border-color: var(--cream);
+      color: var(--cream);
+    }
+    .btn-outline:hover {
+      background: var(--cream);
+      color: var(--forest);
+    }
+    .btn-dark {
+      background: var(--forest);
+      color: var(--cream);
+    }
+    .btn-dark:hover {
+      background: var(--forest-light);
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: linear-gradient(180deg, rgba(27,58,43,0.95) 0%, rgba(27,58,43,0.8) 100%);
+    }
+    .logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.6rem;
+      color: var(--cream);
+      letter-spacing: 0.5px;
+    }
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    nav a {
+      color: var(--cream);
+      font-weight: 500;
+      transition: opacity 0.2s ease;
+    }
+    nav a:hover {
+      opacity: 0.8;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 60px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(27,58,43,0.4) 0%, rgba(92,58,33,0.3) 100%);
+    }
+    .hero img {
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .hero-content {
+      max-width: 700px;
+      color: var(--cream);
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Programs Section */
+    .programs {
+      padding: 6rem 2rem;
+      background: var(--cream);
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .section-title h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--forest);
+      margin-bottom: 1rem;
+    }
+    .section-title p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0.7;
+    }
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .program-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .program-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+    .program-image {
+      height: 220px;
+      overflow: hidden;
+    }
+    .program-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .program-card:hover .program-image img {
+      transform: scale(1.05);
+    }
+    .program-content {
+      padding: 2rem;
+    }
+    .program-content h3 {
+      font-size: 1.6rem;
+      color: var(--forest);
+      margin-bottom: 1rem;
+    }
+    .program-content p {
+      opacity: 0.7;
+      margin-bottom: 1.5rem;
+    }
+    .program-details {
+      display: flex;
+      gap: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--cream);
+      opacity: 0.6;
+      font-size: 0.95rem;
+    }
+
+    /* About Section */
+    .about {
+      padding: 6rem 2rem;
+      background: white;
+    }
+    .about-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-image img {
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+    .about h2 {
+      font-size: 2.5rem;
+      color: var(--forest);
+      margin-bottom: 2rem;
+    }
+    .about p {
+      opacity: 0.7;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 6rem 2rem;
+      background: var(--forest);
+      color: var(--cream);
+    }
+    .contact h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .contact p {
+      text-align: center;
+      opacity: 0.8;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .contact-card {
+      background: rgba(45,90,69,0.3);
+      padding: 2.5rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+    .contact-card:hover {
+      background: rgba(45,90,69,0.4);
+    }
+    .contact-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .contact-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .contact-info a, .contact-info p {
+      opacity: 0.9;
+      transition: opacity 0.2s ease;
+    }
+    .contact-info a:hover {
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: 3rem 2rem;
+    }
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 2rem;
+    }
+    .footer-section h4 {
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: grid;
+      gap: 0.75rem;
+    }
+    .footer-links a:hover {
+      opacity: 0.8;
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 3rem;
+      opacity: 0.6;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Be™ Brooklyn Equine</div>
+    <nav>
+      <ul>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="stables.jpg" alt="Stable exterior in Prospect Park">
+    <div class="hero-content">
+      <h1>Welcome to Brooklyn's Only Central Stable</h1>
+      <p>Experience horse care, riding lessons, pony rides, and trail adventures in the heart of Prospect Park.</p>
+      <div class="hero-buttons">
+        <a href="#programs" class="btn btn-primary">Our Programs</a>
+        <a href="#contact" class="btn btn-outline">Book a Visit</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="programs" class="programs">
+    <div class="section-title">
+      <h2>Our Programs</h2>
+      <p>A wide variety of horse-related activities for riders of all skill levels and ages.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="program-image">
+          <img src="hero-ride.jpg" alt="Group trail ride through scenic countryside">
+        </div>
+        <div class="program-content">
+          <h3>Trail Rides</h3>
+          <p>Explore Brooklyn's finest trails with our guided horseback riding adventures. Perfect for beginners and experienced riders alike.</p>
+          <div class="program-details">
+            <span>📅 Weekends</span>
+            <span>⏱️ 2-4 hours</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="program-card">
+        <div class="program-image">
+          <img src="stables.jpg" alt="Children riding ponies in a safe paddock setting">
+        </div>
+        <div class="program-content">
+          <h3>Pony Rides</h3>
+          <p>Introduce your little ones to the joy of horses! Our pony programs are designed specifically for children ages 4-10.</p>
+          <div class="program-details">
+            <span>👶 Ages 4+</span>
+            <span>💪 All skill levels</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-image">
+          <img src="hero-ride.jpg" alt="Horse and rider enjoying a trail ride in scenic park setting">
+        </div>
+        <div class="program-content">
+          <h3>Riding Lessons</h3>
+          <p>Learn the fundamentals of horsemanship with our expert instructors. From basic mounting to advanced riding techniques.</p>
+          <div class="program-details">
+            <span>📚 All levels</span>
+            <span>🎯 Custom curriculum</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="about-content">
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="stables.jpg" alt="Beautiful stable building in Prospect Park"> 
+        </div>
+        <div class="about-text">
+          <h2>About Be™ Brooklyn Equine</h2>
+          <p>Nestled in the heart of Prospect Park, we're Brooklyn's only centrally located stable, bringing equestrian experiences right to your doorstep. Whether you're looking to try riding for the first time or continue your journey as an experienced rider, our team is here to guide you.</p>
+          <p>Our mission is to make horse care and riding programs accessible, fun, and safe for riders of all ages and abilities. We believe that horses have a way of transforming lives by building confidence, patience, and connection with nature.</p>
+          <a href="#contact" class="btn btn-dark">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Get in Touch</h2>
+    <p>Ready to experience the magic of horses? Contact us to book your next adventure.</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <h3>Location</h3>
+        <div class="contact-info">
+          <p><strong>P Prospect Park Stables</strong></p>
+          <p>Prospect Park, Brooklyn<br>NY 11216</p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">📞</div>
+        <h3>Contact Us</h3>
+        <div class="contact-info">
+          <a href="tel:+17185550123">(718) 555-0123</a>
+          <p>Mon-Sat: 9am - 6pm<br>Sun: 10am - 4pm</p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <h3>Email Us</h3>
+        <div class="contact-info">
+          <a href="mailto:info@bebrooklynequine.com">info@bebrooklynequine.com</a>
+          <p>Response within 24 hours<br>(Mon-Fri)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="#programs">Our Programs</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.nps.gov/prosp/learn/nature/horses.htm">Prospect Park Horses</a></li>
+          <li><a href="#programs">Booking Information</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2026 Be™ Brooklyn Equine. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
